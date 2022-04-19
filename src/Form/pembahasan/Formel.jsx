@@ -21,7 +21,10 @@ class Formel extends React.Component {
         <input type="radio" value="perempuan"></input>
       </label>
       <label>
-        Member: <input type="c" />
+        Alaamt : <textarea cols="30" rows="10" />
+      </label>
+      <label>
+        Member: <input type="checkbox" value={true} />
       </label>
     </form>;
     return <div>a</div>;
