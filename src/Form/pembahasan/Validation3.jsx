@@ -43,7 +43,10 @@ export default class Validation3 extends React.Component {
     };
     let validation = new Validator(data, rules);
     validation.passes();
-    console.log(validation.errors.all());
+    // console.log(validation.errors.all());
+    this.setState({
+      errorrs: [validation.errors.get('email'), validation.errors.get('password')],
+    });
   };
 
   render() {
