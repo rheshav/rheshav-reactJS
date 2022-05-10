@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Validator from 'validatorjs';
 
 const Input = ({ label, type, name, onChange }) => {
   return (
@@ -21,7 +22,7 @@ const ShowErrors = ({ errors }) => {
   );
 };
 
-export default class Validation2 extends React.Component {
+export default class Validation3 extends React.Component {
   state = {
     email: '',
     password: '',
@@ -31,35 +32,18 @@ export default class Validation2 extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    let message = [];
-    if (email.length === 0) {
-      message = [...message, 'Email tidak boleh kosong'];
-    }
-    if (password.length === 0) {
-      message = [...message, 'Password tidak boleh kosong'];
-    }
+    let data = {
+      email,
+      password,
+    };
 
-    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (!re.test(String(email).toLowerCase())) {
-      message = [...message, 'Email tidak valid'];
-    }
-
-    if (password.length < 8) {
-      message = [...message, 'Password terlalu pendek'];
-    }
-
-    if (message.length > 0) {
-      this.setState({
-        errors: message,
-      });
-    } else {
-      alert(`
-  email: ${this.state.email}
-  password: ${this.state.password}
- 
-  `);
-      this.setState({ errors: [] });
-    }
+    let rules = {
+      email: 'required|email',
+      password: 'min:8|required',
+    };
+    let validation = new Validator(data, rules);
+    validation.passes();
+    console.log(validation.errors.all());
   };
 
   render() {
