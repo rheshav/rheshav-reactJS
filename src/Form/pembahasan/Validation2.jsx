@@ -60,6 +60,7 @@ export default class Validation2 extends React.Component {
   `);
       this.setState({ errors: [] });
     }
+    console.log(message);
   };
 
   render() {
@@ -72,12 +73,12 @@ export default class Validation2 extends React.Component {
     return (
       <div style={style}>
         {this.state.errors && <ShowErrors errors={this.state.errors}></ShowErrors>}
-        <h4>Login Page </h4>
+        <h4>Sing-in</h4>
         <form onSubmit={this.handleSubmit}>
           <Input type="email" name="email" label="Email" onChange={(value) => this.setState({ email: value })} />
           <Input type="password" name="password" label="Password" onChange={(value) => this.setState({ password: value })} />
           <br />
-          <button type="submit">Login</button>
+          <button type="submit">Sing-in</button>
         </form>
       </div>
     );
