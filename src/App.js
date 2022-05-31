@@ -7,13 +7,14 @@ import Variable from './Rendering/pembahasan/Variable';
 import Rendering from './Rendering';
 import Formel from './Form/pembahasan/Formel';
 import Form from './Form';
+import Redux from './Redux';
 
 // import FunctionalComponent from './Komponen/FunctionalComponent.jsx';
 
 function App() {
   return (
     <div className="App">
-      <Form></Form>
+      <Redux />
     </div>
   );
 }
